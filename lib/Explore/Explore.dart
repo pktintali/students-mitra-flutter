@@ -13,7 +13,7 @@ class _ExploreState extends State<Explore> {
         backgroundColor: Colors.red,
         title: Center(
           child: Text(
-            "Explore",
+            "Explore option ",
             style: TextStyle(
               fontSize: 25.0,
               color: Colors.white,
