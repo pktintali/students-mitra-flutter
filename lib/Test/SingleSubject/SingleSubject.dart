@@ -76,7 +76,7 @@ class _SingleSubjectState extends State<SingleSubject> {
         backgroundColor: Colors.red,
         title: Center(
           child: Text(
-            "Dashboard",
+            "Select Your Subject",
             style: TextStyle(
               fontSize: 25.0,
               color: Colors.white,
@@ -89,11 +89,7 @@ class _SingleSubjectState extends State<SingleSubject> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Center(
-              child: Text(
-            "Select Your Subject",
-            style: TextStyle(fontSize: 40.0, color: Colors.grey),
-          )),
+
           Center(
             child: RaisedButton(
               onPressed: () {
@@ -105,7 +101,7 @@ class _SingleSubjectState extends State<SingleSubject> {
                                 "https://sheets.googleapis.com/v4/spreadsheets/1nKZxQH1nAVPPhpSLH1tPlYcW31-ZRM9qi7KoGvpLroc/values/${subject}?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc")));
               },
               color: Colors.red,
-              child: Text("Test"),
+              child: Text("Test",style: TextStyle(color: Colors.white),),
             ),
           ),
           Flexible(

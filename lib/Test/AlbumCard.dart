@@ -27,7 +27,7 @@ class AlbumCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Text(
-                    album1[1],
+                    album1[2],
                     style: TextStyle(fontSize: 25.0),
                   ),
                 ),
@@ -35,7 +35,7 @@ class AlbumCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
-                  album1[2],
+                  album1[1],
                   maxLines: 2,
                   softWrap: true,
                   textAlign: TextAlign.center,
