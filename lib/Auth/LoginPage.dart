@@ -172,7 +172,7 @@ class _LoginState extends State<LoginPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      SizedBox(height: 30.0),
+                                      SizedBox(height: 32.0),
                                       Text(
                                           "Enter Your Name",
                                           style: TextStyle(
