@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Auth/SignUpPage.dart';
-import 'graphs.dart';
+import 'package:students_mitra_flutter/Home/graphs.dart';
 import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {

@@ -86,14 +86,19 @@ class _QuestionMakerState extends State<QuestionMaker> {
                               Card(
                                 elevation: 8.0,
 
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Text(
-                                    "${snapshot.data["values"][index][1]}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 30),
-                                  ),
+                                child: Column(
+                                  children: [
+                                    Text("${index}/20"),
+                                    Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Text(
+                                        "${snapshot.data["values"][index][1]}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 30),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               SizedBox(
