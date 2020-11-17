@@ -100,8 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                             child: SingleChildScrollView(
                               child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.74,
+                                height: 510,
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
@@ -144,9 +143,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                       SizedBox(
                                         height: 25.0,
                                       ),
-                                      loginButon,
+                                      Flexible(child: loginButon),
                                       SizedBox(height: 15.0),
-                                      alreadyAcc,
+                                      Flexible(child: alreadyAcc),
                                       SizedBox(height: 15.0),
                                     ],
                                   ),

@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Auth/SignUpPage.dart';
+import 'graphs.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -10,30 +13,69 @@ class _LoginState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
   Widget build(BuildContext context) {
-    final name = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Name ",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    final name = Padding(
+      padding: EdgeInsets.all(0.0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+            hintText: 'Name',
+          ),
+          autocorrect: true,
+          onChanged: (v) {},
+          // decoration: TextDecoration(),
+        ),
+      ),
     );
 
-    final emailField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    final emailField = Padding(
+      padding: EdgeInsets.all(0.0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+            hintText: 'E-Mail',
+          ),
+          autocorrect: true,
+          onChanged: (v) {},
+          // decoration: TextDecoration(),
+        ),
+      ),
     );
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    final passwordField = Padding(
+      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+            hintText: 'Password',
+          ),
+          autocorrect: true,
+          onChanged: (v) {},
+          // decoration: TextDecoration(),
+        ),
+      ),
     );
     final loginButon = Material(
       elevation: 5.0,
