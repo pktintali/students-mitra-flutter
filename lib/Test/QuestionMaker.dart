@@ -77,110 +77,116 @@ class _QuestionMakerState extends State<QuestionMaker> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        height: MediaQuery.of(context).size.height*1.1,
-                        width: 400,
-                        child: Card(
-                          elevation: 8.0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  "${snapshot.data["values"][index][1]}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30),
+
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Card(
+                                elevation: 8.0,
+
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Text(
+                                    "${snapshot.data["values"][index][1]}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30),
+                                  ),
                                 ),
-                                SizedBox(
-                                  height: 25.0,
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 30.0, vertical: 30.0),
-                                  child: Column(
-                                      children: [
-                                    "${snapshot.data['values'][index][2]}",
-                                    "${snapshot.data['values'][index][3]}",
-                                    "${snapshot.data['values'][index][4]}",
-                                    "${snapshot.data['values'][index][5]}"
-                                  ].map((option) {
-                                    return Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 10.0),
-                                      child: RaisedButton(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 25.0),
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              Center(child: Text("Choose the Correct Answer",style: TextStyle(fontSize: 20.0),),),
+                              SizedBox(height: 25.0,),
+                              Container(
+                                child: Column(
+                                    children: [
+                                  "${snapshot.data['values'][index][2]}",
+                                  "${snapshot.data['values'][index][3]}",
+                                  "${snapshot.data['values'][index][4]}",
+                                  "${snapshot.data['values'][index][5]}"
+                                ].map((option) {
+                                  return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin:
+                                        EdgeInsets.symmetric(vertical: 10.0),
+                                    child: RaisedButton(
+                                      elevation: 4.0,
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 10.0),
+                                      child: Center(
                                         child: Text(
                                           option,
                                           style: TextStyle(
                                               fontSize: 18.0,
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
-                                        onPressed: () {
-                                          if ((index < 20) &&
-                                              (Check(
-                                                      option,
-                                                      snapshot.data['values']
-                                                          [index][6]) ==
-                                                  true)) {
-                                            score++;
-                                            c = 0;
-                                          } else {
-                                            if (c == 0) {
-                                              if (Check(
-                                                      option,
-                                                      snapshot.data['values']
-                                                          [index][6]) ==
-                                                  true) {
-                                                print(score);
-                                                score++;
-                                                c++;
-                                              }
+                                      ),
+                                      onPressed: () {
+                                        if ((index < 20) &&
+                                            (Check(
+                                                    option,
+                                                    snapshot.data['values']
+                                                        [index][6]) ==
+                                                true)) {
+                                          score++;
+                                          c = 0;
+                                        } else {
+                                          if (c == 0) {
+                                            if (Check(
+                                                    option,
+                                                    snapshot.data['values']
+                                                        [index][6]) ==
+                                                true) {
+                                              print(score);
+                                              score++;
+                                              c++;
                                             }
                                           }
-                                          setState(() {
-                                            if (index < 20) {
-                                              index++;
-                                            }
-                                          });
-                                        },
-                                        color: Colors.redAccent[100],
-                                        colorBrightness: Brightness.light,
-                                      ),
-                                    );
-                                  }).toList()),
-                                ),
-                                RaisedButton(
-                                  color: Colors.redAccent,
-                                  child: Text('Next'),
-                                  onPressed: () {
-                                    setState(() {
-                                      timer.cancel();
-                                      elapsed = 0;
-                                      initTimer();
-                                      if (index < 20) {
-                                        index++;
-                                        c = 0;
-                                      }
-                                    });
-                                  },
-                                ),
-                                index == 20
-                                    ? RaisedButton(
-                                        color: Colors.green,
-                                        child: Text("Submit"),
-                                        onPressed: () {
-                                          print(score);
-                                          setState(() {
-                                            index = 0;
-                                            score = 0;
-                                          });
-                                        })
-                                    : Text(""),
-                              ],
-                            ),
+                                        }
+                                        setState(() {
+                                          if (index < 20) {
+                                            index++;
+                                          }
+                                        });
+                                      },
+                                      color: Colors.white,
+                                      colorBrightness: Brightness.light,
+                                    ),
+                                  );
+                                }).toList()),
+                              ),
+                              RaisedButton(
+                                color: Colors.redAccent,
+                                child: Text('Next'),
+                                onPressed: () {
+                                  setState(() {
+                                    timer.cancel();
+                                    elapsed = 0;
+                                    initTimer();
+                                    if (index < 20) {
+                                      index++;
+                                      c = 0;
+                                    }
+                                  });
+                                },
+                              ),
+                              index == 20
+                                  ? RaisedButton(
+                                      color: Colors.green,
+                                      child: Text("Submit"),
+                                      onPressed: () {
+                                        print(score);
+                                        setState(() {
+                                          index = 1;
+                                          score = 0;
+                                        });
+                                      })
+                                  : Text(""),
+                            ],
                           ),
                         ),
                       ),
