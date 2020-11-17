@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
-    final AlreadyAcc = Material(
+    final alreadyAcc = Material(
       elevation: 5.0,
       color: Colors.redAccent,
       child: MaterialButton(
@@ -146,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       ),
                                       loginButon,
                                       SizedBox(height: 15.0),
-                                      AlreadyAcc,
+                                      alreadyAcc,
                                       SizedBox(height: 15.0),
                                     ],
                                   ),

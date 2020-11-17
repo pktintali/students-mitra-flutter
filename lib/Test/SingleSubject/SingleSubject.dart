@@ -102,7 +102,7 @@ class _SingleSubjectState extends State<SingleSubject> {
                     MaterialPageRoute(
                         builder: (context) => QuestionMaker(
                             sub:
-                                "https://sheets.googleapis.com/v4/spreadsheets/1nKZxQH1nAVPPhpSLH1tPlYcW31-ZRM9qi7KoGvpLroc/values/${subject}?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc")));
+                                "https://sheets.googleapis.com/v4/spreadsheets/1nKZxQH1nAVPPhpSLH1tPlYcW31-ZRM9qi7KoGvpLroc/values/$subject?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc")));
               },
               color: Colors.red,
               child: Text("Test"),

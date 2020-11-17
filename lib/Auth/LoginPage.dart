@@ -70,110 +70,111 @@ class _LoginState extends State<LoginPage> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Center(
-          child: Text(
-            "Log-in",
-            style: TextStyle(
-              fontSize: 25.0,
-              color: Colors.white,
-            ),
+        title: Text(
+          "Log-in",
+          style: TextStyle(
+            fontSize: 25.0,
+            color: Colors.white,
           ),
         ),
+        centerTitle: true,
       ),
-      body: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          SizedBox(
-            height: 80,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(
-                  child: Container(
-                    child: Stack(
-                      children: <Widget>[
-                        Card(
-                          elevation: 10.0,
-                          child: InkWell(
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: SingleChildScrollView(
-                              child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.6,
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      SizedBox(height: 30.0),
-                                      Text(
-                                        "Enter Your Name",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      name,
-                                      SizedBox(height: 15.0),
-                                      Text(
-                                        "Enter E-Mail ID",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      emailField,
-                                      SizedBox(height: 15.0),
-                                      Text(
-                                        "Enter Your Password",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      passwordField,
-                                      SizedBox(
-                                        height: 25.0,
-                                      ),
-                                      loginButon,
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                      RegisterButon,
-                                    ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Container(
+                      child: Stack(
+                        children: <Widget>[
+                          Card(
+                            elevation: 10.0,
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              onTap: () {
+                                print('Card tapped.');
+                              },
+                              child: SingleChildScrollView(
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.6,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        SizedBox(height: 30.0),
+                                        Text(
+                                          "Enter Your Name",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        name,
+                                        SizedBox(height: 15.0),
+                                        Text(
+                                          "Enter E-Mail ID",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        emailField,
+                                        SizedBox(height: 15.0),
+                                        Text(
+                                          "Enter Your Password",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        passwordField,
+                                        SizedBox(
+                                          height: 25.0,
+                                        ),
+                                        loginButon,
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
+                                        RegisterButon,
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        FractionalTranslation(
-                          translation: Offset(1.1, -0.5),
-                          child: Container(
-                            width: 100.0,
-                            height: 100.0,
-                            child: Center(
-                              child: Icon(
-                                Icons.group,
-                                size: 100.0,
-                                color: Colors.redAccent,
+                          FractionalTranslation(
+                            translation: Offset(1.1, -0.5),
+                            child: Container(
+                              width: 100.0,
+                              height: 100.0,
+                              child: Center(
+                                child: Icon(
+                                  Icons.group,
+                                  size: 100.0,
+                                  color: Colors.redAccent,
+                                ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

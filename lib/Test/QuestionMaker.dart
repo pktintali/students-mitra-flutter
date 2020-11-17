@@ -15,7 +15,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
   _QuestionMakerState(this.sub1);
 
   Future<dynamic> data;
-  List the_user = [];
+  List theUser = [];
   int index = 1;
   int score = 0;
   int c = 0;
@@ -67,7 +67,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.redAccent,
-                title: Text("${elapsed}"),
+                title: Text("$elapsed"),
                 centerTitle: true,
               ),
               body: SingleChildScrollView(
