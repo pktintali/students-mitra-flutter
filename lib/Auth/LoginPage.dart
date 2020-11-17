@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Auth/SignUpPage.dart';
-
+import 'graphs.dart';
+import 'package:flutter/services.dart';
 class LoginPage extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -10,30 +12,81 @@ class _LoginState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
   Widget build(BuildContext context) {
-    final name = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Name ",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    
+    final name = Padding(
+      padding: EdgeInsets.all(0.0),
+      child: Card(
+
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:  OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+
+            hintText: 'Name',
+          ),
+          autocorrect: true,
+          onChanged: (v) {},
+          // decoration: TextDecoration(),
+        ),
+      ),
     );
 
-    final emailField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    final emailField = Padding(
+      padding: EdgeInsets.all(0.0),
+      child: Card(
+
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(0),
+          ),
+        ),
+        child: TextFormField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            border:  OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+
+            hintText: 'E-Mail',
+          ),
+          autocorrect: true,
+          onChanged: (v) {},
+          // decoration: TextDecoration(),
+        ),
+      ),
     );
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.0))),
+    final passwordField = Padding(
+      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      child:Card(
+
+
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(0),
+
+            ),
+          ),
+
+          child: TextFormField(
+
+
+
+            decoration: InputDecoration(
+
+              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              border:  OutlineInputBorder(borderRadius: BorderRadius.circular(0.0)),
+
+              hintText: 'Password',
+            ),
+            autocorrect: true,
+            onChanged: (v) {},
+            // decoration: TextDecoration(),
+          ),
+        ),
+
     );
     final loginButon = Material(
       elevation: 5.0,
@@ -79,6 +132,11 @@ class _LoginState extends State<LoginPage> {
             ),
           ),
         ),
+        leading: IconButton(icon: Icon(Icons.call_made),onPressed: (){
+          setState(() {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Graphs()));
+          });
+        },),
       ),
       body: ListView(
         shrinkWrap: true,
@@ -104,8 +162,9 @@ class _LoginState extends State<LoginPage> {
                             },
                             child: SingleChildScrollView(
                               child: Container(
+
                                 height:
-                                    MediaQuery.of(context).size.height * 0.6,
+                                    430,
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
@@ -115,11 +174,11 @@ class _LoginState extends State<LoginPage> {
                                     children: <Widget>[
                                       SizedBox(height: 30.0),
                                       Text(
-                                        "Enter Your Name",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                          "Enter Your Name",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       name,
                                       SizedBox(height: 15.0),
                                       Text(
@@ -128,7 +187,7 @@ class _LoginState extends State<LoginPage> {
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      emailField,
+                                       emailField,
                                       SizedBox(height: 15.0),
                                       Text(
                                         "Enter Your Password",
@@ -138,13 +197,13 @@ class _LoginState extends State<LoginPage> {
                                       ),
                                       passwordField,
                                       SizedBox(
-                                        height: 25.0,
+                                        height: 20.0,
                                       ),
-                                      loginButon,
+                                      Flexible(child: loginButon),
                                       SizedBox(
                                         height: 15.0,
                                       ),
-                                      RegisterButon,
+                                      Flexible(child: RegisterButon),
                                     ],
                                   ),
                                 ),

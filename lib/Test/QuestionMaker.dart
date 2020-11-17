@@ -77,7 +77,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        height: MediaQuery.of(context).size.height,
+                        height: MediaQuery.of(context).size.height*1.1,
                         width: 400,
                         child: Card(
                           elevation: 8.0,
@@ -97,7 +97,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.symmetric(
-                                      horizontal: 30.0, vertical: 40.0),
+                                      horizontal: 30.0, vertical: 30.0),
                                   child: Column(
                                       children: [
                                     "${snapshot.data['values'][index][2]}",
