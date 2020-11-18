@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Constants/ReUseableCard.dart';
 import 'package:students_mitra_flutter/Test/SingleSubject/SingleSubject.dart';
-import 'package:students_mitra_flutter/Test/TestScreen.dart';
+import 'package:students_mitra_flutter/Test/SubjectList.dart';
 import 'profile.dart';
 
 class TestPage extends StatefulWidget {
@@ -61,7 +61,7 @@ class _TestPageState extends State<TestPage> {
                     child: ReUseableCard(
                      onPress: () {
                       Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => TestScreen()));
+                        MaterialPageRoute(builder: (context) => SubjectList()));
                 },
                 // colour: select==Gender.selected2?Colors.green:Colors.white,
                 colour: Colors.white,

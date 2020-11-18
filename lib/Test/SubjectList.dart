@@ -4,12 +4,12 @@ import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
 import 'package:students_mitra_flutter/Test/QuestionMaker.dart';
 
-class TestScreen extends StatefulWidget {
+class SubjectList extends StatefulWidget {
   @override
-  _TestScreenState createState() => _TestScreenState();
+  _SubjectListState createState() => _SubjectListState();
 }
 
-class _TestScreenState extends State<TestScreen> {
+class _SubjectListState extends State<SubjectList> {
   var url1 =
       "https://sheets.googleapis.com/v4/spreadsheets/1sQhy4Ex1XztFzMU3_nvpc-9par8AcIIwsksm9vhlM_E/values/subject?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc";
   StreamController<int> streamController = new StreamController<int>();
@@ -46,7 +46,7 @@ class _TestScreenState extends State<TestScreen> {
     getTiles(snapshot.data['values']);
     return Padding(
       padding: EdgeInsets.all(5.0),
-      child: GridView.count(
+      child: GridView.count( 
         crossAxisCount: 2,
         childAspectRatio: 1.0,
         mainAxisSpacing: 4.0,
