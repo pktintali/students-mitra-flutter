@@ -32,16 +32,16 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            title: Text("Explore"),
+            label:"Explore",
             icon: Icon(Icons.explore),
           ),
           BottomNavigationBarItem(
-            title: Text("Login"),
+            label: "Login",
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
 
-            title: Text("Test"),
+            label: "Test",
             icon: Icon(Icons.speaker_notes),
           ),
         ],

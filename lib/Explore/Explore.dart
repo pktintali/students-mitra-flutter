@@ -36,6 +36,7 @@ class _ExploreState extends State<Explore> {
                   ],
                 ),
                 SizedBox(height: 5.0,),
+
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.all(8.0),

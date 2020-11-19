@@ -49,7 +49,7 @@ class _SubjectListState extends State<SubjectList> {
       body: OrientationBuilder(
           builder: (context, orientation) {
             return GridView.count(
-              crossAxisCount:  3,
+              crossAxisCount:  2,
               childAspectRatio: 1.0,
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
