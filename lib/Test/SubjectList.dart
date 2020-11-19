@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
@@ -41,20 +42,26 @@ class _SubjectListState extends State<SubjectList> {
     }
   }
 
-  gridview(AsyncSnapshot<dynamic> snapshot) {
+  Widget gridview_potrait(AsyncSnapshot<dynamic> snapshot) {
     print(snapshot.data['values'][0]);
     getTiles(snapshot.data['values']);
-    return Padding(
-      padding: EdgeInsets.all(5.0),
-      child: GridView.count( 
-        crossAxisCount: 2,
-        childAspectRatio: 1.0,
-        mainAxisSpacing: 4.0,
-        crossAxisSpacing: 4.0,
-        children: myTile,
-      ),
+    return Scaffold(
+      body: OrientationBuilder(
+          builder: (context, orientation) {
+            return GridView.count(
+              crossAxisCount:  3,
+              childAspectRatio: 1.0,
+              mainAxisSpacing: 4.0,
+              crossAxisSpacing: 4.0,
+
+
+              children: myTile,
+            );
+
+          }),
     );
   }
+
 
   circularProgress() {
     return Center(
@@ -122,7 +129,12 @@ class _SubjectListState extends State<SubjectList> {
                   streamController.sink.add(snapshot.data.length);
                   // gridview
 
-                  return gridview(snapshot);
+                  //if(MediaQuery.of(context).orientation==Orientation.portrait){
+                    //return gridview_potrait(snapshot);
+                  //}else{
+                    //return gridview_landscape(snapshot);
+                  //}
+                  gridview_potrait(snapshot);
                 }
 
                 return circularProgress();

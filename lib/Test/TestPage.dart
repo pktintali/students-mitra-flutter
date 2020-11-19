@@ -38,16 +38,18 @@ class _TestPageState extends State<TestPage> {
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.3,
                   height: MediaQuery.of(context).size.height*0.2,
-                  child: ReUseableCard(
-                    onPress: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SingleSubject()));
-                    },
-                    //colour: select==Gender.selected1?Colors.green:Colors.white,
-                    colour: Colors.white,
-                    cardchild: "Single Subject  ",
+                  child: Expanded(
+                    child: ReUseableCard(
+                      onPress: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SingleSubject()));
+                      },
+                      //colour: select==Gender.selected1?Colors.green:Colors.white,
+                      colour: Colors.white,
+                      cardchild: "Single Subject  ",
+                    ),
                   ),
                 ),
               ),
@@ -58,15 +60,17 @@ class _TestPageState extends State<TestPage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.3,
                     height: MediaQuery.of(context).size.height*0.2,
-                    child: ReUseableCard(
-                     onPress: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SubjectList()));
+                    child: Expanded(
+                      child: ReUseableCard(
+                       onPress: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SubjectList()));
                 },
                 // colour: select==Gender.selected2?Colors.green:Colors.white,
                 colour: Colors.white,
-                cardchild: "Select Subjects    ",
+                cardchild:"Select Subjects",
               ),
+                    ),
                   )),
               SizedBox(
                 width: 6.0,
@@ -75,12 +79,14 @@ class _TestPageState extends State<TestPage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.3,
                     height: MediaQuery.of(context).size.height*0.2,
-                    child: ReUseableCard(
+                    child: Expanded(
+                      child: ReUseableCard(
                 onPress: () {},
                 // colour: select==Gender.selected2?Colors.green:Colors.white,
                 colour: Colors.white,
                 cardchild: " My All Subjects      ",
               ),
+                    ),
                   )),
             ],
           ),

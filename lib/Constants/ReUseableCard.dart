@@ -23,9 +23,11 @@ class ReUseableCard extends StatelessWidget {
             children: <Widget>[
               Container(
                   padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    cardchild,
-                    style: TextStyle(fontSize: 25.0),
+                  child: Flexible(
+                    child: Text(
+                      cardchild,
+                      style: TextStyle(fontSize: 25.0),
+                    ),
                   )),
             ],
           ),
