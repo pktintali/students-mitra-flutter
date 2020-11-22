@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:students_mitra_flutter/Profile/profile.dart';
 import 'dart:math';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -56,6 +57,17 @@ class _GraphsState extends State<Graphs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.person,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Profile()));
+            },
+          ),
+        ],
         centerTitle: true,
         title: Text("Progress"),
       ),

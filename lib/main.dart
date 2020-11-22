@@ -9,15 +9,8 @@ bool _isSignedIn = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseAuth.instance.authStateChanges().listen((User user) {
-    if (user == null) {
-      print('User is currently signed out!');
-      _isSignedIn = false;
-    } else {
-      print('User is signed in!');
-      _isSignedIn = true;
-    }
-  });
+  final user = FirebaseAuth.instance.currentUser;
+  _isSignedIn = user != null ? true : false;
   runApp(MyApp());
 }
 

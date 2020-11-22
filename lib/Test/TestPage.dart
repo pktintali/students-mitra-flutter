@@ -15,19 +15,21 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.person,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.person,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Profile()));
+            },
           ),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Profile()));
-          },
-        ),
+        ],
         backgroundColor: Colors.red,
         title: Center(
           child: Text(
-            "Dashboard",
+            "Select any one",
             style: TextStyle(
               fontSize: 25.0,
               color: Colors.white,
