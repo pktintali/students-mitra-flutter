@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.students_mitra_flutter">
+    package="com.tdevelopersindia.students_mitra_flutter">
    <application
         android:label="students_mitra_flutter"
         android:icon="@mipmap/ic_launcher">

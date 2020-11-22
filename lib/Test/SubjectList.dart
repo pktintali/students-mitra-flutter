@@ -42,26 +42,21 @@ class _SubjectListState extends State<SubjectList> {
     }
   }
 
-  Widget gridview_potrait(AsyncSnapshot<dynamic> snapshot) {
+  Widget gridviewPotrait(AsyncSnapshot<dynamic> snapshot) {
     print(snapshot.data['values'][0]);
     getTiles(snapshot.data['values']);
     return Scaffold(
-      body: OrientationBuilder(
-          builder: (context, orientation) {
-            return GridView.count(
-              crossAxisCount:  2,
-              childAspectRatio: 1.0,
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0,
-
-
-              children: myTile,
-            );
-
-          }),
+      body: OrientationBuilder(builder: (context, orientation) {
+        return GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 1.0,
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+          children: myTile,
+        );
+      }),
     );
   }
-
 
   circularProgress() {
     return Center(
@@ -130,11 +125,11 @@ class _SubjectListState extends State<SubjectList> {
                   // gridview
 
                   //if(MediaQuery.of(context).orientation==Orientation.portrait){
-                    //return gridview_potrait(snapshot);
+                  //return gridview_potrait(snapshot);
                   //}else{
-                    //return gridview_landscape(snapshot);
+                  //return gridview_landscape(snapshot);
                   //}
-                  gridview_potrait(snapshot);
+                  gridviewPotrait(snapshot);
                 }
 
                 return circularProgress();

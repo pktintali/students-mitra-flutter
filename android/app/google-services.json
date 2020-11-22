@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "10038853739",
+    "firebase_url": "https://students-mitra.firebaseio.com",
+    "project_id": "students-mitra",
+    "storage_bucket": "students-mitra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10038853739:android:e284449003b7e78365712e",
+        "android_client_info": {
+          "package_name": "com.tdevelopersindia.students_mitra_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10038853739-bu74jgh2cpib2tcpc9o5q3eugk6bja6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbqcJbqmnkfZw80J1dqlQ7LTW47hZeX2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10038853739-bu74jgh2cpib2tcpc9o5q3eugk6bja6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

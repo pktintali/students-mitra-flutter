@@ -1,13 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../Home/graphs.dart';
+import 'package:students_mitra_flutter/HomePage.dart';
+import 'myFirebase.dart';
 
 class LoginSignUp extends StatefulWidget {
+  static const String id = 'auth';
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<LoginSignUp> {
+  static String email = '';
+  static String password = '';
+
+  void doSignUP() async {
+    final user = await MyFirebase.signUp(email: email, password: password);
+    if (user != null) {
+      Navigator.pushReplacementNamed(context, HomePage.id);
+    } else {
+      print('Something Went Wrong');
+    }
+  }
+
+  void doLogIn() async {
+    final user = await MyFirebase.logIn(email: email, password: password);
+    if (user != null) {
+      Navigator.pushReplacementNamed(context, HomePage.id);
+    } else {
+      print('User null');
+    }
+  }
+
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   bool isSignUp = false;
 
@@ -47,7 +70,9 @@ class _LoginState extends State<LoginSignUp> {
           hintText: 'E-Mail',
         ),
         autocorrect: true,
-        onChanged: (v) {},
+        onChanged: (v) {
+          email = v;
+        },
         // decoration: TextDecoration(),
       ),
     ),
@@ -67,7 +92,9 @@ class _LoginState extends State<LoginSignUp> {
           hintText: 'Password',
         ),
         autocorrect: true,
-        onChanged: (v) {},
+        onChanged: (v) {
+          password = v;
+        },
         // decoration: TextDecoration(),
       ),
     ),
@@ -81,6 +108,7 @@ class _LoginState extends State<LoginSignUp> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.red,
+        leading: Container(),
         title: Center(
           child: Text(
             "Log-in",
@@ -89,15 +117,6 @@ class _LoginState extends State<LoginSignUp> {
               color: Colors.white,
             ),
           ),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.call_made),
-          onPressed: () {
-            setState(() {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Graphs()));
-            });
-          },
         ),
       ),
       body: SingleChildScrollView(
@@ -202,16 +221,15 @@ class _LoginState extends State<LoginSignUp> {
                                 color: Colors.red,
                                 onPressed: () {
                                   setState(() {
-                                    isSignUp = false;
+                                    isSignUp ? doSignUP() : doLogIn();
                                   });
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Login',
-                                    style: buttonTextStyle,
-                                  ),
-                                ),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      isSignUp ? 'SignUp' : 'Login',
+                                      style: buttonTextStyle,
+                                    )),
                               ),
                             ),
                           ],
@@ -226,13 +244,15 @@ class _LoginState extends State<LoginSignUp> {
                                 color: Colors.red,
                                 onPressed: () {
                                   setState(() {
-                                    isSignUp = true;
+                                    isSignUp = !isSignUp;
                                   });
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'SignUp',
+                                    isSignUp
+                                        ? 'Already Account Login'
+                                        : 'New User SignUp',
                                     style: buttonTextStyle,
                                   ),
                                 ),

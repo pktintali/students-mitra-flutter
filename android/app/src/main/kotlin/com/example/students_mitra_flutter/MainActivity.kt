@@ -1,4 +1,4 @@
-package com.example.students_mitra_flutter
+package com.tdevelopersindia.students_mitra_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:students_mitra_flutter/Auth/LoginSignUp.dart';
 import 'package:students_mitra_flutter/Explore/Explore.dart';
+import 'package:students_mitra_flutter/Home/graphs.dart';
 import 'package:students_mitra_flutter/Test/TestPage.dart';
 
 class HomePage extends StatefulWidget {
+  static const String id = 'homepage';
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -12,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 1;
   List<Widget> tabPages = [
     Explore(),
-    LoginSignUp(),
+    Graphs(),
     TestPage(),
   ];
 
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            label:"Explore",
+            label: "Explore",
             icon: Icon(Icons.explore),
           ),
           BottomNavigationBarItem(
@@ -40,7 +41,6 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-
             label: "Test",
             icon: Icon(Icons.speaker_notes),
           ),

@@ -6,7 +6,7 @@ class Explore extends StatefulWidget {
 }
 
 class _ExploreState extends State<Explore> {
-  grid_card() {
+  gridCard() {
     return GestureDetector(
       child: Card(
         elevation: 8.0,
@@ -28,15 +28,19 @@ class _ExploreState extends State<Explore> {
                   children: <Widget>[
                     CircleAvatar(
                         child: Image.network(
-                          "https://specials-images.forbesimg.com/imageserve/5d35eacaf1176b0008974b54/960x0.jpg?cropX1=790&cropX2=5350&cropY1=784&cropY2=3349",
-                          fit: BoxFit.scaleDown,
-                        )),
-                    Text("Explore ",style: TextStyle(fontSize: 25.0),),
+                      "https://specials-images.forbesimg.com/imageserve/5d35eacaf1176b0008974b54/960x0.jpg?cropX1=790&cropX2=5350&cropY1=784&cropY2=3349",
+                      fit: BoxFit.scaleDown,
+                    )),
+                    Text(
+                      "Explore ",
+                      style: TextStyle(fontSize: 25.0),
+                    ),
                     Text("1 Hour Ago")
                   ],
                 ),
-                SizedBox(height: 5.0,),
-
+                SizedBox(
+                  height: 5.0,
+                ),
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.all(8.0),
@@ -44,7 +48,10 @@ class _ExploreState extends State<Explore> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            child: Text("The new law regarding various ammendments has been implemented",style: TextStyle(fontSize: 25.0),),
+                            child: Text(
+                              "The new law regarding various ammendments has been implemented",
+                              style: TextStyle(fontSize: 25.0),
+                            ),
                           ),
                         ),
                         Expanded(
@@ -104,7 +111,7 @@ class _ExploreState extends State<Explore> {
           ),
         ),
       ),
-      body: grid_card(),
+      body: gridCard(),
     );
   }
 }

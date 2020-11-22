@@ -40,7 +40,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
   }
 
   Future<dynamic> futurealbum;
-  Check(val, ans) {
+  check(val, ans) {
     timer.cancel();
     elapsed = 0;
     initTimer();
@@ -77,7 +77,6 @@ class _QuestionMakerState extends State<QuestionMaker> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -85,10 +84,9 @@ class _QuestionMakerState extends State<QuestionMaker> {
                             children: <Widget>[
                               Card(
                                 elevation: 8.0,
-
                                 child: Column(
                                   children: [
-                                    Text("${index}/20"),
+                                    Text("$index/20"),
                                     Padding(
                                       padding: const EdgeInsets.all(20.0),
                                       child: Text(
@@ -104,8 +102,15 @@ class _QuestionMakerState extends State<QuestionMaker> {
                               SizedBox(
                                 height: 20.0,
                               ),
-                              Center(child: Text("Choose the Correct Answer",style: TextStyle(fontSize: 20.0),),),
-                              SizedBox(height: 25.0,),
+                              Center(
+                                child: Text(
+                                  "Choose the Correct Answer",
+                                  style: TextStyle(fontSize: 20.0),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 25.0,
+                              ),
                               Container(
                                 child: Column(
                                     children: [
@@ -120,8 +125,8 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                         EdgeInsets.symmetric(vertical: 10.0),
                                     child: RaisedButton(
                                       elevation: 4.0,
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 10.0),
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10.0),
                                       child: Center(
                                         child: Text(
                                           option,
@@ -132,7 +137,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                       ),
                                       onPressed: () {
                                         if ((index < 20) &&
-                                            (Check(
+                                            (check(
                                                     option,
                                                     snapshot.data['values']
                                                         [index][6]) ==
@@ -141,7 +146,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                           c = 0;
                                         } else {
                                           if (c == 0) {
-                                            if (Check(
+                                            if (check(
                                                     option,
                                                     snapshot.data['values']
                                                         [index][6]) ==
