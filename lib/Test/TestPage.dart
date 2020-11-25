@@ -4,6 +4,7 @@ import 'package:students_mitra_flutter/Constants/ReUseableCard.dart';
 import 'package:students_mitra_flutter/Test/SingleSubject/SingleSubject.dart';
 import 'package:students_mitra_flutter/Test/SubjectList.dart';
 import '../Profile/profile.dart';
+import '../game/game_zone.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -94,6 +95,23 @@ class _TestPageState extends State<TestPage> {
           SizedBox(
             height: 30.0,
           ),
+          Row(
+            children: [
+              Expanded(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height*0.2,
+                    child: ReUseableCard(
+                      onPress: () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=> Game_Login()));
+                      },
+                      // colour: select==Gender.selected2?Colors.green:Colors.white,
+                      colour: Colors.white,
+                      cardchild: "Game Zone",
+                    ),
+                  )),
+
+            ],
+          )
         ],
       ),
     );
