@@ -25,6 +25,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
   int attempted=0;
   int not_attempted=0;
   int negative=0;
+  Color colour=Colors.white;
   initTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (timer.tick == total) {
@@ -124,17 +125,22 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                         margin:
                                         EdgeInsets.symmetric(vertical: 10.0),
                                         child: RaisedButton(
+
                                           elevation: 4.0,
                                           padding: EdgeInsets.symmetric(
                                               vertical: 10.0),
-                                          child: Center(
-                                            child: Text(
-                                              option,
-                                              style: TextStyle(
-                                                  fontSize: 18.0,
-                                                  color: Colors.black),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Center(
+                                              child: Text(
+                                                option,
+                                                style: TextStyle(
+                                                    fontSize: 18.0,
+                                                    color: Colors.black),
+                                              ),
                                             ),
                                           ),
+                                          color:colour,
                                           onPressed: () {
                                             attempted++;
                                             if (c==0){
@@ -160,14 +166,11 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                                   c++;
                                                 }
                                               }
+                                             
                                             }
-                                            setState(() {
-                                              if (index <20) {
-                                                index++;
-                                              }
-                                            });
+
                                           },
-                                          color: Colors.white,
+
                                           colorBrightness: Brightness.light,
                                         ),
                                       );

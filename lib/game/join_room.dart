@@ -38,6 +38,63 @@ class _Join_RoomState extends State<Join_Room> {
 
               children: <Widget>[
                 SizedBox(height: 20.0),
+                Text("Room id = ashbd8md89000",style: TextStyle(fontSize: 20.0,color: Colors.black),),
+                Container(
+                  width: MediaQuery.of(context).size.width*0.7,
+                  height: 40,
+                  margin: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(3.0),
+
+                  decoration: BoxDecoration(
+                      color: Colors.green[100],
+                      border: Border.all(color: Colors.blueAccent)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Center(child: Text("Joined Users",style: TextStyle(fontSize: 20.0),)),
+                  ),
+                ),
+                Container(
+                    height: MediaQuery.of(context).size.height*0.2,
+                    width: MediaQuery.of(context).size.width*0.7,
+                    decoration: BoxDecoration(
+
+                        border: Border.all(color: Colors.blueGrey)
+                    ),
+                    child:Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView.builder(
+                          itemCount: array.length,
+                          itemBuilder: (context, index) {
+                            return
+                              Center(child: Text(array[index],style: TextStyle(fontSize: 20.0,color: Colors.red),));
+                            // how to create a ListView show a Column that includes:
+                            // _country[index].name,
+                            // _country[index].capital,
+                            // _country[index].language,
+
+
+                          }),
+                    )),
+                SizedBox(height: 80.0,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    RaisedButton(
+                      child: Text("Leave",style: TextStyle(color: Colors.white)),
+                      color: Colors.red,
+                      onPressed: (){},
+                    ),
+
+                    RaisedButton(
+                      child: Text("Join",style: TextStyle(color: Colors.white)),
+                      color: Colors.green,
+                      onPressed: (){},
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20.0),
                 Center(
                     child: Text(
                       "Select Game Level",
@@ -167,61 +224,8 @@ class _Join_RoomState extends State<Join_Room> {
                     Text("Hard",style: TextStyle(fontSize: 20.0),),
                   ],
                 ),
-                SizedBox(height: 20.0),
-                Text("Room id = ashbd8md89000",style: TextStyle(fontSize: 20.0,color: Colors.black),),
-                Container(
-                  width: MediaQuery.of(context).size.width*0.6,
-                  height: 40,
-                  margin: const EdgeInsets.all(15.0),
-                  padding: const EdgeInsets.all(3.0),
-
-                  decoration: BoxDecoration(
-                    color: Colors.green[100],
-                      border: Border.all(color: Colors.blueAccent)
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Center(child: Text("Joined Users",style: TextStyle(fontSize: 20.0),)),
-                  ),
-                ),
-                Container(
-                   height: MediaQuery.of(context).size.height*0.2,
-                    width: MediaQuery.of(context).size.width*0.6,
-                    decoration: BoxDecoration(
-
-                        border: Border.all(color: Colors.blueGrey)
-                    ),
-                  child:Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder(
-                        itemCount: array.length,
-                        itemBuilder: (context, index) {
-                          return
-                              Center(child: Text(array[index],style: TextStyle(fontSize: 20.0,color: Colors.red),));
-                              // how to create a ListView show a Column that includes:
-                              // _country[index].name,
-                              // _country[index].capital,
-                              // _country[index].language,
 
 
-                        }),
-                  )),
-                Row(
-
-                  children: [
-                    RaisedButton(
-                      child: Text("Leave"),
-                      color: Colors.red,
-                      onPressed: (){},
-                    ),
-                    SizedBox(width: 200,),
-                    RaisedButton(
-                      child: Text("Join"),
-                      color: Colors.green,
-                      onPressed: (){},
-                    ),
-                  ],
-                ),
 
 
 
