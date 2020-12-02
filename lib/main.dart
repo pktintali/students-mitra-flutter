@@ -5,12 +5,13 @@ import 'package:students_mitra_flutter/Home/graphs.dart';
 import 'package:students_mitra_flutter/HomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-bool _isSignedIn = false;
+// bool _isSignedIn = false;
+bool _isSignedIn = true;
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  final user = FirebaseAuth.instance.currentUser;
-  _isSignedIn = user != null ? true : false;
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // final user = FirebaseAuth.instance.currentUser;
+  // _isSignedIn = user != null ? true : false;
   runApp(MyApp());
 }
 
