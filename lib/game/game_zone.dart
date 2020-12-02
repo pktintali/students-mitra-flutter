@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/game/join_room.dart';
 import 'join_room.dart';
-class Game_Login extends StatefulWidget {
+
+class GameLogin extends StatefulWidget {
   @override
-  _Game_LoginState createState() => _Game_LoginState();
+  _GameLoginState createState() => _GameLoginState();
 }
 
-class _Game_LoginState extends State<Game_Login> {
+class _GameLoginState extends State<GameLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +22,9 @@ class _Game_LoginState extends State<Game_Login> {
             radius: 18,
             child: ClipOval(
                 child: Image.network(
-                  "https://wallpaperaccess.com/full/895258.jpg",
-                  fit: BoxFit.cover,
-                )),
+              "https://wallpaperaccess.com/full/895258.jpg",
+              fit: BoxFit.cover,
+            )),
           ),
         ],
       ),
@@ -33,7 +34,7 @@ class _Game_LoginState extends State<Game_Login> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
-                NetworkImage('https://wallpaperaccess.com/full/895258.jpg'),
+                    NetworkImage('https://wallpaperaccess.com/full/895258.jpg'),
                 fit: MediaQuery.of(context).orientation == Orientation.portrait
                     ? BoxFit.fitHeight
                     : BoxFit.fitWidth,
@@ -47,30 +48,28 @@ class _Game_LoginState extends State<Game_Login> {
                 SizedBox(height: 20.0),
                 Center(
                     child: Text(
-                      "Welcome To Game Mode",
-                      style: TextStyle(fontSize: 30.0, color: Colors.white),
-                    )),
+                  "Welcome To Game Mode",
+                  style: TextStyle(fontSize: 30.0, color: Colors.white),
+                )),
                 SizedBox(height: 30.0),
                 Text(
                   "Join/Create Room",
                   style: TextStyle(fontSize: 20.0, color: Colors.white),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 18.0,right: 18.0),
+                  padding: EdgeInsets.only(left: 18.0, right: 18.0),
                   child: Card(
                     color: Colors.white70,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(0),
-
                       ),
                     ),
                     child: TextFormField(
                       decoration: InputDecoration(
                         contentPadding:
-                        EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         border: OutlineInputBorder(
-
                             borderRadius: BorderRadius.circular(0.0)),
                         hintText: 'Room',
                       ),
@@ -80,25 +79,34 @@ class _Game_LoginState extends State<Game_Login> {
                     ),
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).orientation == Orientation.portrait?30:0,),
-
+                SizedBox(
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? 30
+                          : 0,
+                ),
                 FlatButton(
                   color: Colors.transparent,
                   splashColor: Colors.white,
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Join_Room()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Join_Room()));
                     print('done');
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0.0),
-                      side: BorderSide(color: Colors.white)
-                  ),
+                      side: BorderSide(color: Colors.white)),
                   child: Text(
                     'Join',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).orientation == Orientation.portrait?20:10,),
+                SizedBox(
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? 20
+                          : 10,
+                ),
                 FlatButton(
                   color: Colors.transparent,
                   splashColor: Colors.white,
@@ -106,10 +114,8 @@ class _Game_LoginState extends State<Game_Login> {
                     print('done');
                   },
                   shape: RoundedRectangleBorder(
-
                       borderRadius: BorderRadius.circular(0.0),
-                      side: BorderSide(color: Colors.white)
-                  ),
+                      side: BorderSide(color: Colors.white)),
                   child: Text(
                     'Create Room',
                     style: TextStyle(color: Colors.white),

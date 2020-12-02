@@ -99,17 +99,17 @@ class _TestPageState extends State<TestPage> {
             children: [
               Expanded(
                   child: Container(
-                    height: MediaQuery.of(context).size.height*0.2,
-                    child: ReUseableCard(
-                      onPress: () {
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=> Game_Login()));
-                      },
-                      // colour: select==Gender.selected2?Colors.green:Colors.white,
-                      colour: Colors.white,
-                      cardchild: "Game Zone",
-                    ),
-                  )),
-
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: ReUseableCard(
+                  onPress: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => GameLogin()));
+                  },
+                  // colour: select==Gender.selected2?Colors.green:Colors.white,
+                  colour: Colors.white,
+                  cardchild: "Game Zone",
+                ),
+              )),
             ],
           )
         ],
