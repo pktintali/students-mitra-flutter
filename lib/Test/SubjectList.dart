@@ -17,6 +17,7 @@ class _SubjectListState extends State<SubjectList> {
   Future<dynamic> album;
   List<dynamic> arr = [];
   List<Widget> myTile = [];
+  bool enabled=false;
 
   void getTiles(data) {
     int c = 0;
@@ -27,8 +28,10 @@ class _SubjectListState extends State<SubjectList> {
       }
 
       myTile.add(GestureDetector(
-        child: GridTile(child: AlbumCard(album1: i)),
+
+        child: GridTile(child: AlbumCard(album1: i,check: enabled,)),
         onTap: () {
+          enabled=!enabled;
           setState(() {
             if (arr.contains(i[2])) {
               arr.remove(i[2]);

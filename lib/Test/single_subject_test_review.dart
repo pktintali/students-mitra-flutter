@@ -86,7 +86,7 @@ class _Score_review_single_subState extends State<Score_review_single_sub> {
                       color: Colors.red,
                       onPressed: (){
                         setState(() {
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>TestPage()));
+                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>TestPage()));
                         });
                       }
                     ),

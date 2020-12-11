@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AlbumCard extends StatelessWidget {
-  const AlbumCard({this.album1, this.colour});
+  const AlbumCard({this.album1,this.colour,this.check});
 
   final List album1;
   final Color colour;
+  final bool check;
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class AlbumCard extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color:Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(15.0),
           ),

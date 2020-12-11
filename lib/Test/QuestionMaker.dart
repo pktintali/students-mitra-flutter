@@ -28,14 +28,40 @@ class _QuestionMakerState extends State<QuestionMaker> {
   int negative = 0;
   Color colour = Colors.white;
   List<String> optArray = [];
+  bool ch=false;
   initTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (timer.tick == total) {
         timer.cancel();
+        ch=false;
         setState(() {
-          index++;
+          if (index < 20) {
+            index++;
+          }
           elapsed = 0;
-          initTimer();
+          if (index < 20) {
+            initTimer();
+          }
+          else{
+            index = 1;
+            not_attempted = 20 - attempted;
+            negative = attempted - score;
+            Navigator.pop(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Score_review_single_sub(
+                          sub: array,
+                          score: score,
+                          attempted: attempted,
+                          negative: negative,
+                          not_attempted:
+                          not_attempted,
+                        )));
+          }
+
+
         });
       } else {
         setState(() {
@@ -47,9 +73,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
 
   Future<dynamic> futurealbum;
   Check(val, ans) {
-    timer.cancel();
-    elapsed = 0;
-    initTimer();
+
     if (val == ans) {
       return true;
     }
@@ -76,6 +100,9 @@ class _QuestionMakerState extends State<QuestionMaker> {
     optArray.add(snapshot.data['values'][index][4]);
     optArray.add(snapshot.data['values'][index][5]);
   }
+  PageController _controller = PageController(
+    initialPage: 0,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -150,12 +177,13 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                   ],
                                 ),
                               ),
-                              RaisedButton(
-                                color: Colors.redAccent,
-                                child: Text('Next'),
+                              index<20?RaisedButton(
+                                color:ch==true?Colors.red:Colors.green,
+                                child: ch==true?Text('Next'):Text('Skip'),
                                 onPressed: () {
                                   optArray = [];
                                   setState(() {
+                                    ch=false;
                                     timer.cancel();
                                     elapsed = 0;
                                     initTimer();
@@ -172,7 +200,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                     ];
                                   });
                                 },
-                              ),
+                              ):Text(""),
                               index == 20
                                   ? RaisedButton(
                                       color: Colors.green,
@@ -183,6 +211,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                           index = 1;
                                           not_attempted = 20 - attempted;
                                           negative = attempted - score;
+                                          Navigator.pop(context);
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -217,10 +246,12 @@ class _QuestionMakerState extends State<QuestionMaker> {
 
   @override
   void dispose() {
+    _controller.dispose();
     super.dispose();
   }
 
   Widget optContainer({int i, AsyncSnapshot snapshot}) {
+
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -240,6 +271,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
         ),
         color: optColors[i],
         onPressed: () {
+          ch=true;
           attempted++;
           if (c == 0) {
             array.add(MyVector(
