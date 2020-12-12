@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-class AlbumCard extends StatelessWidget {
-  const AlbumCard({this.album1,this.colour,this.check});
+class AlbumCard extends StatefulWidget {
+  const AlbumCard({this.album1, this.colour, this.check});
 
   final List album1;
   final Color colour;
   final bool check;
 
+  @override
+  _AlbumCardState createState() => _AlbumCardState();
+}
 
+class _AlbumCardState extends State<AlbumCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 8.0,
+      elevation: 5.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(15.0),
@@ -19,7 +23,7 @@ class AlbumCard extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color:Colors.white,
+          color: widget.colour,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(15.0),
           ),
@@ -42,12 +46,15 @@ class AlbumCard extends StatelessWidget {
                       icon: Icon(
                         Icons.star_border,
                         size: 20.0,
+                        color: widget.colour == Colors.white
+                            ? Colors.black
+                            : Colors.white,
                       ),
                       color: Colors.black,
                       onPressed: () {},
                     )),
                 FractionalTranslation(
-                  translation: Offset(0, -0.5),
+                  translation: Offset(0, -0.7),
                   child: Container(
                     height: 20.0,
                     width: 35.0,
@@ -68,18 +75,25 @@ class AlbumCard extends StatelessWidget {
               ],
             ),
             Text(
-              album1[2],
-              style: TextStyle(fontSize: 25.0),
+              widget.album1[2],
+              style: TextStyle(
+                fontSize: 25.0,
+                color:
+                    widget.colour == Colors.white ? Colors.black : Colors.white,
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                album1[1],
+                widget.album1[1],
                 maxLines: 2,
                 softWrap: true,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15.0,
+                  color: widget.colour == Colors.white
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ),
             ),

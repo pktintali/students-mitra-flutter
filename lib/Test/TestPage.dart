@@ -55,13 +55,13 @@ class _TestPageState extends State<TestPage> {
                     },
                     //colour: select==Gender.selected1?Colors.green:Colors.white,
                     colour: Colors.white,
-                    cardchild: "Single Subject  ",
+                    cardtext: "Single",
                   ),
                 ),
               ),
-              SizedBox(
-                width: 6.0,
-              ),
+              // SizedBox(
+              //   width: 6.0,
+              // ),
               Expanded(
                   child: Container(
                 width: MediaQuery.of(context).size.width * 0.3,
@@ -73,12 +73,12 @@ class _TestPageState extends State<TestPage> {
                   },
                   // colour: select==Gender.selected2?Colors.green:Colors.white,
                   colour: Colors.white,
-                  cardchild: "Select Subjects",
+                  cardtext: "Select",
                 ),
               )),
-              SizedBox(
-                width: 6.0,
-              ),
+              // SizedBox(
+              //   width: 6.0,
+              // ),
               Expanded(
                   child: Container(
                 width: MediaQuery.of(context).size.width * 0.3,
@@ -87,14 +87,14 @@ class _TestPageState extends State<TestPage> {
                   onPress: () {},
                   // colour: select==Gender.selected2?Colors.green:Colors.white,
                   colour: Colors.white,
-                  cardchild: " My All Subjects      ",
+                  cardtext: "My All",
                 ),
               )),
             ],
           ),
-          SizedBox(
-            height: 30.0,
-          ),
+          // SizedBox(
+          //   height: 30.0,
+          // ),
           Row(
             children: [
               Expanded(
@@ -107,11 +107,12 @@ class _TestPageState extends State<TestPage> {
                   },
                   // colour: select==Gender.selected2?Colors.green:Colors.white,
                   colour: Colors.white,
-                  cardchild: "Game Zone",
+                  cardtext: "Game Zone",
+                  isGameZone: true,
                 ),
               )),
             ],
-          )
+          ),
         ],
       ),
     );

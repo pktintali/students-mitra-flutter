@@ -22,10 +22,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: tabPages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        selectedIconTheme: IconThemeData(
+          size: 35,
+          color: Colors.red,
+        ),
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         backgroundColor: Colors.grey[100],
-        selectedItemColor: Colors.red,
+        // selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey.withOpacity(.60),
         onTap: (value) {
           // Respond to item press.

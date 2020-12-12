@@ -15,46 +15,47 @@ class _SingleSubjectState extends State<SingleSubject> {
   StreamController<int> streamController = new StreamController<int>();
   Future<dynamic> album;
   String subject;
-  Color colour = Colors.white;
   List<Widget> myTile = [];
+  List<Color> mainColor = [];
 
-  void getTiles(data) {
-    int c = 0;
-    for (var i in data) {
-      if (c == 0) {
-        c++;
-        continue;
-      }
+  // void getTiles(data) {
+  //   int c = 0;
+  //   for (var i in data) {
+  //     if (c == 0) {
+  //       c++;
+  //       continue;
+  //     }
+  //     mainColor.add(Colors.white);
+  //     myTile.add(GestureDetector(
+  //       child: GridTile(
+  //           child: AlbumCard(
+  //         album1: i,
+  //         colour: mainColor[0], //error
+  //       )),
+  //       onTap: () {
+  //         setState(() {
+  //           subject = i[2];
+  //           mainColor[0] = Colors.green;
+  //         });
+  //       },
+  //     ));
+  //   }
+  // }
 
-      myTile.add(GestureDetector(
-        child: GridTile(
-            child: AlbumCard(
-          album1: i,
-          colour: colour,
-        )),
-        onTap: () {
-          setState(() {
-            subject = i[2];
-          });
-        },
-      ));
-    }
-  }
-
-  gridview(AsyncSnapshot<dynamic> snapshot) {
-    print(snapshot.data['values'][0]);
-    getTiles(snapshot.data['values']);
-    return Padding(
-      padding: EdgeInsets.all(5.0),
-      child: GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 1.0,
-        mainAxisSpacing: 4.0,
-        crossAxisSpacing: 4.0,
-        children: myTile,
-      ),
-    );
-  }
+  // gridview(AsyncSnapshot<dynamic> snapshot) {
+  //   print(snapshot.data['values'][0]);
+  // getTiles(snapshot.data['values']);
+  //   return Padding(
+  //     padding: EdgeInsets.all(5.0),
+  //     child: GridView.count(
+  //       crossAxisCount: 2,
+  //       childAspectRatio: 1.0,
+  //       mainAxisSpacing: 4.0,
+  //       crossAxisSpacing: 4.0,
+  //       children: myTile,
+  //     ),
+  //   );
+  // }
 
   circularProgress() {
     return Center(
@@ -89,7 +90,6 @@ class _SingleSubjectState extends State<SingleSubject> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-
           Center(
             child: RaisedButton(
               onPressed: () {
@@ -101,24 +101,62 @@ class _SingleSubjectState extends State<SingleSubject> {
                                 "https://sheets.googleapis.com/v4/spreadsheets/1nKZxQH1nAVPPhpSLH1tPlYcW31-ZRM9qi7KoGvpLroc/values/$subject?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc")));
               },
               color: Colors.red,
-              child: Text("Test",style: TextStyle(color: Colors.white),),
+              child: Text(
+                "Start",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
           Flexible(
-            child: FutureBuilder<dynamic>(
+            child: FutureBuilder(
               future: album,
               builder: (context, snapshot) {
-                // not setstate here
-                //
                 if (snapshot.hasError) {
                   return Text('Error ${snapshot.error}');
                 }
-                //
                 if (snapshot.hasData) {
                   streamController.sink.add(snapshot.data.length);
                   // gridview
+                  final length = snapshot.data['values'].length;
+                  print(snapshot.data['values'][1]);
+                  print(length);
+                  for (int i = 0; i < length; i++) {
+                    mainColor.add(Colors.white);
+                  }
+                  final orientation = MediaQuery.of(context).orientation;
+                  return Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: GridView.builder(
+                      itemCount: length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount:
+                              (orientation == Orientation.portrait) ? 2 : 4),
+                      itemBuilder: (BuildContext context, int index) {
+                        return index + 1 < length
+                            ? GestureDetector(
+                                child: GridTile(
+                                    child: AlbumCard(
+                                  album1: snapshot.data['values'][index + 1],
+                                  colour: mainColor[index], //error
+                                )),
+                                onTap: () {
+                                  setState(() {
+                                    for (int i = 0; i < length; i++) {
+                                      mainColor[i] = Colors.white;
+                                    }
+                                    mainColor[index] = Colors.green;
+                                    subject =
+                                        snapshot.data['values'][index + 1][1];
+                                  });
+                                },
+                              )
+                            : Container();
+                        ;
+                      },
+                    ),
+                  );
 
-                  return gridview(snapshot);
+                  // gridview(snapshot);
                 }
 
                 return circularProgress();
