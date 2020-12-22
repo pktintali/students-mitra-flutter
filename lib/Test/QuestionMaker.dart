@@ -28,12 +28,12 @@ class _QuestionMakerState extends State<QuestionMaker> {
   int negative = 0;
   Color colour = Colors.white;
   List<String> optArray = [];
-  bool ch=false;
+  bool ch = false;
   initTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (timer.tick == total) {
         timer.cancel();
-        ch=false;
+        ch = false;
         setState(() {
           if (index < 20) {
             index++;
@@ -41,8 +41,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
           elapsed = 0;
           if (index < 20) {
             initTimer();
-          }
-          else{
+          } else {
             index = 1;
             not_attempted = 20 - attempted;
             negative = attempted - score;
@@ -50,18 +49,14 @@ class _QuestionMakerState extends State<QuestionMaker> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        Score_review_single_sub(
+                    builder: (context) => Score_review_single_sub(
                           sub: array,
                           score: score,
                           attempted: attempted,
                           negative: negative,
-                          not_attempted:
-                          not_attempted,
+                          not_attempted: not_attempted,
                         )));
           }
-
-
         });
       } else {
         setState(() {
@@ -73,7 +68,6 @@ class _QuestionMakerState extends State<QuestionMaker> {
 
   Future<dynamic> futurealbum;
   Check(val, ans) {
-
     if (val == ans) {
       return true;
     }
@@ -100,6 +94,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
     optArray.add(snapshot.data['values'][index][4]);
     optArray.add(snapshot.data['values'][index][5]);
   }
+
   PageController _controller = PageController(
     initialPage: 0,
   );
@@ -126,22 +121,22 @@ class _QuestionMakerState extends State<QuestionMaker> {
                     children: <Widget>[
                       Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(5.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Card(
-                                elevation: 8.0,
+                                elevation: 3.0,
                                 child: Column(
                                   children: [
                                     Text("$index/20"),
                                     Padding(
-                                      padding: const EdgeInsets.all(20.0),
+                                      padding: const EdgeInsets.all(10.0),
                                       child: Text(
                                         "${snapshot.data["values"][index][1]}",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18),
                                       ),
                                     ),
                                   ],
@@ -157,7 +152,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                 ),
                               ),
                               SizedBox(
-                                height: 25.0,
+                                height: 20.0,
                               ),
                               Container(
                                 child: Column(
@@ -177,30 +172,36 @@ class _QuestionMakerState extends State<QuestionMaker> {
                                   ],
                                 ),
                               ),
-                              index<20?RaisedButton(
-                                color:ch==true?Colors.red:Colors.green,
-                                child: ch==true?Text('Next'):Text('Skip'),
-                                onPressed: () {
-                                  optArray = [];
-                                  setState(() {
-                                    ch=false;
-                                    timer.cancel();
-                                    elapsed = 0;
-                                    initTimer();
-                                    if (index < 20) {
-                                      index++;
-                                      c = 0;
-                                    }
-                                    // optColor = Colors.white;
-                                    optColors = [
-                                      Colors.white,
-                                      Colors.white,
-                                      Colors.white,
-                                      Colors.white
-                                    ];
-                                  });
-                                },
-                              ):Text(""),
+                              index < 20
+                                  ? RaisedButton(
+                                      color: ch == true
+                                          ? Colors.red
+                                          : Colors.green,
+                                      child: ch == true
+                                          ? Text('Next')
+                                          : Text('Skip'),
+                                      onPressed: () {
+                                        optArray = [];
+                                        setState(() {
+                                          ch = false;
+                                          timer.cancel();
+                                          elapsed = 0;
+                                          initTimer();
+                                          if (index < 20) {
+                                            index++;
+                                            c = 0;
+                                          }
+                                          // optColor = Colors.white;
+                                          optColors = [
+                                            Colors.white,
+                                            Colors.white,
+                                            Colors.white,
+                                            Colors.white
+                                          ];
+                                        });
+                                      },
+                                    )
+                                  : Text(""),
                               index == 20
                                   ? RaisedButton(
                                       color: Colors.green,
@@ -251,16 +252,20 @@ class _QuestionMakerState extends State<QuestionMaker> {
   }
 
   Widget optContainer({int i, AsyncSnapshot snapshot}) {
-
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: RaisedButton(
-        elevation: 4.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
+          ),
+        ),
+        elevation: 2.0,
         padding: EdgeInsets.all(0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
             child: Center(
               child: Text(
                 optArray[i],
@@ -271,7 +276,7 @@ class _QuestionMakerState extends State<QuestionMaker> {
         ),
         color: optColors[i],
         onPressed: () {
-          ch=true;
+          ch = true;
           attempted++;
           if (c == 0) {
             array.add(MyVector(

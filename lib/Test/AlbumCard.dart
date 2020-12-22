@@ -15,7 +15,7 @@ class _AlbumCardState extends State<AlbumCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5.0,
+      elevation: 3.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(15.0),
