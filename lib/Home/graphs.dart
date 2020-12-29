@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:students_mitra_flutter/Profile/profile.dart';
 import 'dart:math';
-
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Graphs extends StatefulWidget {

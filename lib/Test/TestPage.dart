@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Constants/ReUseableCard.dart';
+import 'package:students_mitra_flutter/Test/FirebaseTest.dart';
 import 'package:students_mitra_flutter/Test/SingleSubject/SingleSubject.dart';
 import 'package:students_mitra_flutter/Test/SubjectList.dart';
 import '../Profile/profile.dart';
@@ -22,8 +23,9 @@ class _TestPageState extends State<TestPage> {
               Icons.person,
             ),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
+              Navigator.pushNamed(context, Profile.id);
+              // Navigator.push(
+              //     context, MaterialPageRoute(builder: (context) => Profile()));
             },
           ),
         ],
@@ -112,6 +114,15 @@ class _TestPageState extends State<TestPage> {
                 ),
               )),
             ],
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => FirebaseTest()));
+            },
+            child: Text('Test'),
           ),
         ],
       ),

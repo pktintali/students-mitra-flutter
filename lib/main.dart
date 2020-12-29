@@ -4,14 +4,15 @@ import 'package:students_mitra_flutter/Auth/LoginSignUp.dart';
 import 'package:students_mitra_flutter/Home/graphs.dart';
 import 'package:students_mitra_flutter/HomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:students_mitra_flutter/Profile/profile.dart';
 
-// bool _isSignedIn = false;
-bool _isSignedIn = true;
+bool _isSignedIn = false;
+// bool _isSignedIn = true;
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  // final user = FirebaseAuth.instance.currentUser;
-  // _isSignedIn = user != null ? true : false;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  final user = FirebaseAuth.instance.currentUser;
+  _isSignedIn = user != null ? true : false;
   runApp(MyApp());
 }
 
@@ -23,9 +24,10 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginSignUp.id: (context) => LoginSignUp(),
         Graphs.id: (context) => Graphs(),
-        HomePage.id: (context) => HomePage()
+        HomePage.id: (context) => HomePage(),
+        Profile.id: (context) => Profile(),
       },
-      title: 'Students Mitra',
+      title: 'StudentMitra',
       theme: Theme.of(context).copyWith(primaryColor: Colors.red),
       home: HomePage(),
     );
