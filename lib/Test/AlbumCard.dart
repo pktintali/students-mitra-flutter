@@ -43,6 +43,7 @@ class _AlbumCardState extends State<AlbumCard> {
                 FractionalTranslation(
                     translation: Offset(-0.1, -0.1),
                     child: IconButton(
+                      splashColor: Colors.grey,
                       icon: Icon(
                         Icons.star_border,
                         size: 20.0,
@@ -51,7 +52,9 @@ class _AlbumCardState extends State<AlbumCard> {
                             : Colors.white,
                       ),
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        ;
+                      },
                     )),
                 FractionalTranslation(
                   translation: Offset(0, -0.7),
