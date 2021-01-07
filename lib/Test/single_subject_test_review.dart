@@ -187,7 +187,9 @@ class _Score_review_single_subState extends State<Score_review_single_sub> {
                 shrinkWrap: true,
                 itemCount: sub.length,
                 itemBuilder: (BuildContext context, int index) {
+
                   return Center(
+
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Card(

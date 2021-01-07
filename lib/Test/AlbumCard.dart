@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 class AlbumCard extends StatefulWidget {
-  const AlbumCard({this.album1, this.colour, this.check});
+  const AlbumCard({this.album1, this.colour, this.check,this.active_subject});
 
   final List album1;
+  final List active_subject;
   final Color colour;
   final bool check;
 
@@ -11,9 +13,19 @@ class AlbumCard extends StatefulWidget {
   _AlbumCardState createState() => _AlbumCardState();
 }
 
+
 class _AlbumCardState extends State<AlbumCard> {
+  CollectionReference profile =
+  FirebaseFirestore.instance.collection('usersData');
+  final user = FirebaseAuth.instance.currentUser.email;
+
+
+
+
+  bool val=true;
   @override
   Widget build(BuildContext context) {
+    print(widget.active_subject);
     return Card(
       elevation: 3.0,
       shape: RoundedRectangleBorder(
@@ -44,17 +56,33 @@ class _AlbumCardState extends State<AlbumCard> {
                     translation: Offset(-0.1, -0.1),
                     child: IconButton(
                       splashColor: Colors.grey,
-                      icon: Icon(
+                      icon: widget.active_subject.contains(widget.album1[2])? Icon(
+                        Icons.star,
+                        size: 20.0,
+                        color: Colors.red,
+
+                      ):Icon(
+
                         Icons.star_border,
                         size: 20.0,
                         color: widget.colour == Colors.white
                             ? Colors.black
                             : Colors.white,
                       ),
-                      color: Colors.black,
-                      onPressed: () {
-                        ;
+                      onPressed: (){
+                        setState(() {
+                          if (widget.active_subject.contains(widget.album1[2])){
+                            widget.active_subject.remove(widget.album1[2]);
+                          }else{
+                            widget.active_subject.add(widget.album1[2]);
+                          }
+                          print(widget.active_subject);
+                          FirebaseFirestore.instance.collection("usersData").doc("$user").update({"activeSubject":widget.active_subject});
+                        });
+
                       },
+
+
                     )),
                 FractionalTranslation(
                   translation: Offset(0, -0.7),

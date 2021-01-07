@@ -14,11 +14,28 @@ class Graphs extends StatefulWidget {
 class _GraphsState extends State<Graphs> {
   List<charts.Series> subValue;
   List<charts.Series> lineValue;
+  List active;
+
+  List<List> linedata;
   // List<String> activeSubjects;
   CollectionReference profile =
       FirebaseFirestore.instance.collection('usersData');
   final user = FirebaseAuth.instance.currentUser.email;
+  List<List> get_line(data1,data2){
+    List<List> linedata=[];
+    List line=[];
 
+    for (var i in data2.keys){
+      for (var j in data2[i]){
+        line.add(j);
+      }
+      linedata.add(line);
+      line=[];
+    }
+    return linedata;
+
+
+  }
   static List<charts.Series<GraphVal, String>> _createRandomData(
       {List<dynamic> activeSub, Map<String, dynamic> marks}) {
     List<GraphVal> desktopSalesData = [
@@ -39,6 +56,17 @@ class _GraphsState extends State<Graphs> {
         },
       )
     ];
+  }
+  static List<SalesData> _lineData(data){
+    List<SalesData> list=[];
+    int c=1;
+    for (var i in data){
+      list.add(SalesData(c.toString(),i.toDouble()*10));
+      c++;
+
+    }
+
+    return list;
   }
 
   // @override
@@ -114,11 +142,16 @@ class _GraphsState extends State<Graphs> {
                     } else {
                       if (snapshot.connectionState == ConnectionState.done) {
                         Map<String, dynamic> data = snapshot.data.data();
+                        active=data['activeSubject'];
                         subValue = _createRandomData(
                             activeSub: data['activeSubject'],
                             marks: data['marks']);
                         // data['profile']['name'],
                         // GraphVal('AI', random.nextInt(100)),
+                        linedata=get_line(active,data['marks']);
+
+                        print(linedata);
+                        print(active);
                         return barChart();
                       }
                       return Center(child: CircularProgressIndicator());
@@ -157,30 +190,76 @@ class _GraphsState extends State<Graphs> {
             SizedBox(
               height: 10.0,
             ),
-            Card(
-              elevation: 0.0,
-              child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  padding: EdgeInsets.all(20.0),
-                  child: SfCartesianChart(
-                      // Initialize category axis
-                      primaryXAxis: CategoryAxis(),
-                      series: <ChartSeries>[
-                        // Initialize line series
-                        LineSeries<SalesData, String>(
-                            dataSource: [
-                              // Bind data source
-                              SalesData('1', 35),
-                              SalesData('2', 28),
-                              SalesData('3', 34),
-                              SalesData('4', 32),
-                              SalesData('5', 40)
-                            ],
-                            xValueMapper: (SalesData sales, _) => sales.year,
-                            yValueMapper: (SalesData sales, _) => sales.sales)
-                      ])),
+
+            FutureBuilder(
+              future: profile.doc('$user').get(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<DocumentSnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text(snapshot.error);
+                } else {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    Map<String, dynamic> data = snapshot.data.data();
+                    active=data['activeSubject'];
+                    subValue = _createRandomData(
+                        activeSub: data['activeSubject'],
+                        marks: data['marks']);
+                    // data['profile']['name'],
+                    // GraphVal('AI', random.nextInt(100)),
+                    linedata=get_line(active,data['marks']);
+
+                    print(linedata);
+                    print(active);
+                    return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount:active.length,
+                        itemBuilder: (BuildContext context, int index){
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                            elevation: 0.0,
+                            child: Container(
+                                width: MediaQuery.of(context).size.width*0.8,
+                                height: MediaQuery.of(context).size.height * 0.5,
+                                padding: EdgeInsets.all(20.0),
+                                child: SfCartesianChart(
+                                  // Initialize category axis
+                                    primaryXAxis: CategoryAxis(
+                                      title:AxisTitle(
+                                        text: active[index].toString(),
+                                        textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'Roboto',
+                                        fontSize: 25,
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+
+                                    ),
+
+                                    series: <ChartSeries>[
+                                      // Initialize line series
+                                      LineSeries<SalesData, String>(
+
+
+                                          dataSource:_lineData(linedata[index]),
+
+                                          xValueMapper: (SalesData sales, _) => sales.year,
+                                          yValueMapper: (SalesData sales, _) => sales.sales)
+                                    ])),
+                          ),
+                        );
+
+                        }
+                    );
+                  }
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
             ),
+
           ],
         ),
       ),

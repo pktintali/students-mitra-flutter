@@ -142,16 +142,22 @@ class _SingleSubjectState extends State<SingleSubject> {
                                               child: AlbumCard(
                                             album1: snapshot.data['values']
                                                 [index + 1],
-                                            colour: mainColor[index], //error
+                                            colour: mainColor[index],
+                                                active_subject: activeSub,//error
                                           )),
                                           onPressed: () {
                                             setState(() {
-                                              for (int i = 0; i < length; i++) {
-                                                mainColor[i] = Colors.white;
+                                              if (mainColor[index]==Colors.white) {
+                                                for (int i = 0; i < length; i++) {
+                                                  mainColor[i] = Colors.white;
+                                                }
+                                                mainColor[index] = Colors.green;
+                                                subject =
+                                                snapshot.data['values'][index + 1][2];
                                               }
-                                              mainColor[index] = Colors.green;
-                                              subject = snapshot.data['values']
-                                                  [index + 1][2];
+                                              else{
+                                                mainColor[index]=Colors.white;
+                                              }
                                             });
                                           },
                                         ),
