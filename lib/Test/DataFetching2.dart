@@ -6,6 +6,7 @@ class DataFetching2 {
   Future<dynamic> getCityWeather() async {
     Networking networking = Networking(url: url1);
     var weatherData = await networking.getData();
+    var s=weatherData["values"].length;
     return weatherData;
 
     //List<Users> users=[];

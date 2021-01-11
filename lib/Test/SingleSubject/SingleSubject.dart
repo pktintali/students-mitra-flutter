@@ -154,6 +154,7 @@ class _SingleSubjectState extends State<SingleSubject> {
                                                 mainColor[index] = Colors.green;
                                                 subject =
                                                 snapshot.data['values'][index + 1][2];
+
                                               }
                                               else{
                                                 mainColor[index]=Colors.white;

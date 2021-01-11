@@ -81,29 +81,24 @@ class _Score_review_single_subState extends State<Score_review_single_sub> {
                 padding: EdgeInsets.all(10.0),
                 child: Column(
                   children: <Widget>[
-                    RaisedButton(
-                      child: Text('Close',style: TextStyle(color: Colors.white)),
-                      color: Colors.red,
-                      onPressed: (){
-                        setState(() {
-                          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>TestPage()));
-                        });
-                      }
-                    ),
-                    Card(
-                      elevation: 8.0,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 80,
-                        child:Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text('ScoreBoard',style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),),
-                              SizedBox(width: 20.0,),
-                              Text('${score}/20',style:TextStyle(fontSize: 35.0),),
 
-                            ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        elevation: 8.0,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 80,
+                          child:Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              children: <Widget>[
+                                Text('ScoreBoard',style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),),
+                                SizedBox(width: 20.0,),
+                                Text('${score}/20',style:TextStyle(fontSize: 25.0),),
+
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -187,9 +182,7 @@ class _Score_review_single_subState extends State<Score_review_single_sub> {
                 shrinkWrap: true,
                 itemCount: sub.length,
                 itemBuilder: (BuildContext context, int index) {
-
                   return Center(
-
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Card(
@@ -210,17 +203,17 @@ class _Score_review_single_subState extends State<Score_review_single_sub> {
                                 Container(
 
 
-                                  child: Flexible(child: Text('${index+1} - ${sub[index].ques}',style: TextStyle(fontSize: 25.0),)),
+                                  child: Flexible(child: Text('${index+1} - ${sub[index].ques}',style: TextStyle(fontSize: 20.0),)),
                                 ),
                                 SizedBox(height: 15.0,),
                                 Text('You Selected',style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),),
                                 SizedBox(height: 5.0,),
-                                Flexible(child: Text(sub[index].selected_option,style: TextStyle(fontSize: 25.0),)),
+                                Flexible(child: Text(sub[index].selected_option,style: TextStyle(fontSize: 20.0),)),
 
                                 SizedBox(height: 10.0,),
                                 Text('Correct Ans',style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),),
                                 SizedBox(height: 5.0,),
-                                Flexible(child: Text(sub[index].ans,style: TextStyle(fontSize: 25.0),)),
+                                Flexible(child: Text(sub[index].ans,style: TextStyle(fontSize: 20.0),)),
                                 SizedBox(height: 10.0,),
                                 Center(
                                   child: TextButton(

@@ -17,7 +17,7 @@ dependencies:
   firebase_core: ^0.5.2
   floating_text: ^0.0.3
   cloud_firestore: "^0.14.4"
-
+  youtube_player_flutter: ^7.0.0+7
   http: ^0.12.2
   syncfusion_flutter_charts: ^18.3.48+1
 

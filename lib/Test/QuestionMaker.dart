@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:async';
@@ -50,12 +51,12 @@ class _QuestionMakerState extends State<QuestionMaker> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => Score_review_single_sub(
-                          sub: array,
-                          score: score,
-                          attempted: attempted,
-                          negative: negative,
-                          not_attempted: not_attempted,
-                        )));
+                      sub: array,
+                      score: score,
+                      attempted: attempted,
+                      negative: negative,
+                      not_attempted: not_attempted,
+                    )));
           }
         });
       } else {
@@ -174,59 +175,59 @@ class _QuestionMakerState extends State<QuestionMaker> {
                               ),
                               index < 20
                                   ? RaisedButton(
-                                      color: ch == true
-                                          ? Colors.red
-                                          : Colors.green,
-                                      child: ch == true
-                                          ? Text('Next')
-                                          : Text('Skip'),
-                                      onPressed: () {
-                                        optArray = [];
-                                        setState(() {
-                                          ch = false;
-                                          timer.cancel();
-                                          elapsed = 0;
-                                          initTimer();
-                                          if (index < 20) {
-                                            index++;
-                                            c = 0;
-                                          }
-                                          // optColor = Colors.white;
-                                          optColors = [
-                                            Colors.white,
-                                            Colors.white,
-                                            Colors.white,
-                                            Colors.white
-                                          ];
-                                        });
-                                      },
-                                    )
+                                color: ch == true
+                                    ? Colors.red
+                                    : Colors.green,
+                                child: ch == true
+                                    ? Text('Next')
+                                    : Text('Skip'),
+                                onPressed: () {
+                                  optArray = [];
+                                  setState(() {
+                                    ch = false;
+                                    timer.cancel();
+                                    elapsed = 0;
+                                    initTimer();
+                                    if (index < 20) {
+                                      index++;
+                                      c = 0;
+                                    }
+                                    // optColor = Colors.white;
+                                    optColors = [
+                                      Colors.white,
+                                      Colors.white,
+                                      Colors.white,
+                                      Colors.white
+                                    ];
+                                  });
+                                },
+                              )
                                   : Text(""),
                               index == 20
                                   ? RaisedButton(
-                                      color: Colors.green,
-                                      child: Text("Submit"),
-                                      onPressed: () {
-                                        print(score);
-                                        setState(() {
-                                          index = 1;
-                                          not_attempted = 20 - attempted;
-                                          negative = attempted - score;
-                                          Navigator.pop(context);
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Score_review_single_sub(
-                                                        sub: array,
-                                                        score: score,
-                                                        attempted: attempted,
-                                                        negative: negative,
-                                                        not_attempted:
-                                                            not_attempted,
-                                                      )));
-                                        });
-                                      })
+                                  color: Colors.green,
+                                  child: Text("Submit"),
+                                  onPressed: () {
+                                    print(score);
+                                    setState(() {
+                                      index = 1;
+                                      not_attempted = 20 - attempted;
+                                      negative = attempted - score;
+                                      Navigator.pop(context);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Score_review_single_sub(
+                                                    sub: array,
+                                                    score: score,
+                                                    attempted: attempted,
+                                                    negative: negative,
+                                                    not_attempted:
+                                                    not_attempted,
+                                                  )));
+                                    });
+                                  })
                                   : Text(""),
                             ],
                           ),
