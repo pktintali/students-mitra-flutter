@@ -1,3 +1,6 @@
+import 'package:provider/provider.dart';
+import 'package:students_mitra_flutter/Test/SingleSubject/SubContainer.dart';
+import 'package:students_mitra_flutter/providers/SheetSubjects.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,13 +9,57 @@ import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
 import 'package:students_mitra_flutter/Test/QuestionMaker.dart';
+import 'package:students_mitra_flutter/providers/UnitSubjectData.dart';
 
-class SingleSubject extends StatefulWidget {
+class SingleSubject extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: Text(
+          "Select Your Subject",
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Flexible(
+            child: Consumer<SheetSubjects>(
+              builder: (context, sheetSub, __) => sheetSub.db.length > 0
+                  ? GridView.builder(
+                      itemCount: sheetSub.db.length,
+                      physics: BouncingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount:
+                              (orientation == Orientation.portrait) ? 2 : 4),
+                      itemBuilder: (BuildContext context, int index) {
+                        final subData = UnitSubjectData(
+                            fullName: sheetSub.db[index].fullName,
+                            shortName: sheetSub.db[index].shortName);
+                        return SubContainer(subData: subData);
+                      },
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SingleSubject2 extends StatefulWidget {
   @override
   _SingleSubjectState createState() => _SingleSubjectState();
 }
 
-class _SingleSubjectState extends State<SingleSubject> {
+class _SingleSubjectState extends State<SingleSubject2> {
   var url1 =
       "https://sheets.googleapis.com/v4/spreadsheets/1sQhy4Ex1XztFzMU3_nvpc-9par8AcIIwsksm9vhlM_E/values/subject?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc";
   StreamController<int> streamController = new StreamController<int>();
@@ -143,21 +190,23 @@ class _SingleSubjectState extends State<SingleSubject> {
                                             album1: snapshot.data['values']
                                                 [index + 1],
                                             colour: mainColor[index],
-                                                active_subject: activeSub,//error
+                                            active_subject: activeSub, //error
                                           )),
                                           onPressed: () {
                                             setState(() {
-                                              if (mainColor[index]==Colors.white) {
-                                                for (int i = 0; i < length; i++) {
+                                              if (mainColor[index] ==
+                                                  Colors.white) {
+                                                for (int i = 0;
+                                                    i < length;
+                                                    i++) {
                                                   mainColor[i] = Colors.white;
                                                 }
                                                 mainColor[index] = Colors.green;
                                                 subject =
-                                                snapshot.data['values'][index + 1][2];
-
-                                              }
-                                              else{
-                                                mainColor[index]=Colors.white;
+                                                    snapshot.data['values']
+                                                        [index + 1][2];
+                                              } else {
+                                                mainColor[index] = Colors.white;
                                               }
                                             });
                                           },

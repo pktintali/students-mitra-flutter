@@ -8,9 +8,9 @@ class Networking {
     http.Response response = await http.get(url);
     if (response.statusCode == 200) {
       String data = response.body;
-      var data23 = jsonDecode(data);
+      // var data23 = jsonDecode(data);
 
-      return data23;
+      return data;
     } else {
       print(response.statusCode);
     }

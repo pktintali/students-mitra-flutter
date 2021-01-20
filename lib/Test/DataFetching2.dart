@@ -3,10 +3,11 @@ import 'package:students_mitra_flutter/Test/NetWorking.dart';
 class DataFetching2 {
   final String url1;
   DataFetching2({this.url1});
+
   Future<dynamic> getCityWeather() async {
     Networking networking = Networking(url: url1);
     var weatherData = await networking.getData();
-    var s=weatherData["values"].length;
+    // var s=weatherData["values"].length;
     return weatherData;
 
     //List<Users> users=[];

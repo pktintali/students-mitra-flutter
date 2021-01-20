@@ -3,12 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 class AlbumCard extends StatefulWidget {
   const AlbumCard({this.album1, this.colour, this.check,this.active_subject});
-
   final List album1;
   final List active_subject;
   final Color colour;
   final bool check;
-
   @override
   _AlbumCardState createState() => _AlbumCardState();
 }
@@ -18,10 +16,6 @@ class _AlbumCardState extends State<AlbumCard> {
   CollectionReference profile =
   FirebaseFirestore.instance.collection('usersData');
   final user = FirebaseAuth.instance.currentUser.email;
-
-
-
-
   bool val=true;
   @override
   Widget build(BuildContext context) {

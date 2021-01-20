@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:students_mitra_flutter/Constants/ReUseableCard.dart';
-import 'package:students_mitra_flutter/Test/FirebaseTest.dart';
+import 'package:students_mitra_flutter/Test/ProviderTest.dart';
 import 'package:students_mitra_flutter/Test/SingleSubject/SingleSubject.dart';
 import 'package:students_mitra_flutter/Test/SubjectList.dart';
+import 'package:students_mitra_flutter/providers/SheetSubjects.dart';
+import 'package:students_mitra_flutter/providers/UserData.dart';
 import '../Profile/profile.dart';
 import '../game/game_zone.dart';
 
@@ -49,11 +52,17 @@ class _TestPageState extends State<TestPage> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   height: MediaQuery.of(context).size.height * 0.2,
                   child: ReUseableCard(
-                    onPress: () {
+                    onPress: () async {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SingleSubject()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SingleSubject(),
+                        ),
+                      );
+                      var sub = context.read<SheetSubjects>();
+                      if (sub.db.length < 1) {
+                        await sub.getSubjects();
+                      }
                     },
                     //colour: select==Gender.selected1?Colors.green:Colors.white,
                     colour: Colors.white,
@@ -115,14 +124,35 @@ class _TestPageState extends State<TestPage> {
               )),
             ],
           ),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => FirebaseTest()));
-            },
-            child: Text('Test'),
+          Consumer<UserData>(
+            builder: (context, userData, child) => Column(
+              children: [
+                RaisedButton(
+                  onPressed: () async {
+                    var data = context.read<UserData>();
+                    if (data.activeSub == null) {
+                      await data.fetchActiveSub();
+                    }
+                    // await _userData.fetchActiveSub();
+                    // print(_userData.getActiveSub);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => ProviderTest()));
+                  },
+                  child: Text('Test'),
+                ),
+                RaisedButton(
+                  onPressed: () async {
+                    var data = context.read<UserData>();
+                    // if (data.ac == null) {
+                    await data.fetchActiveSub();
+                    // }
+                  },
+                  child: Text('Fetch'),
+                ),
+              ],
+            ),
           ),
         ],
       ),
