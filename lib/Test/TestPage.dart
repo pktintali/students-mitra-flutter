@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:students_mitra_flutter/Constants/ReUseableCard.dart';
-import 'package:students_mitra_flutter/Test/ProviderTest.dart';
 import 'package:students_mitra_flutter/Test/SingleSubject/SingleSubject.dart';
 import 'package:students_mitra_flutter/Test/SubjectList.dart';
 import 'package:students_mitra_flutter/providers/SheetSubjects.dart';
-import 'package:students_mitra_flutter/providers/UserData.dart';
 import '../Profile/profile.dart';
 import '../game/game_zone.dart';
 
@@ -123,36 +121,6 @@ class _TestPageState extends State<TestPage> {
                 ),
               )),
             ],
-          ),
-          Consumer<UserData>(
-            builder: (context, userData, child) => Column(
-              children: [
-                RaisedButton(
-                  onPressed: () async {
-                    var data = context.read<UserData>();
-                    if (data.activeSub == null) {
-                      await data.fetchActiveSub();
-                    }
-                    // await _userData.fetchActiveSub();
-                    // print(_userData.getActiveSub);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => ProviderTest()));
-                  },
-                  child: Text('Test'),
-                ),
-                RaisedButton(
-                  onPressed: () async {
-                    var data = context.read<UserData>();
-                    // if (data.ac == null) {
-                    await data.fetchActiveSub();
-                    // }
-                  },
-                  child: Text('Fetch'),
-                ),
-              ],
-            ),
           ),
         ],
       ),

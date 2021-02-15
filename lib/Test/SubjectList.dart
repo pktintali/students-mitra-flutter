@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
-import 'package:students_mitra_flutter/Test/QuestionMaker.dart';
 
 class SubjectList extends StatefulWidget {
   @override
@@ -106,10 +105,10 @@ class _SubjectListState extends State<SubjectList> {
             child: RaisedButton(
               onPressed: () {
                 for (var k in arr) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => QuestionMaker(sub: k)));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => 2QuestionMaker()));
                 }
               },
               color: Colors.red,

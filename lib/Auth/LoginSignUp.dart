@@ -105,7 +105,7 @@ class _LoginState extends State<LoginSignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: Container(),
