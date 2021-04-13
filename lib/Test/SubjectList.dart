@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
-
 class SubjectList extends StatefulWidget {
   @override
   _SubjectListState createState() => _SubjectListState();

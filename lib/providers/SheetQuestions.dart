@@ -6,7 +6,10 @@ import 'package:students_mitra_flutter/providers/QuestionsDB.dart';
 class SheetQuestions with ChangeNotifier {
   List<QuestionsDB> qdb = [];
   int i = 0;
-  double marg = 1.6;
+  double marg = 0;
+  double timer = 100;
+
+  set withToTimer(double width) => timer = width;
   Future<void> getQuestions({String subject}) async {
     final sub =
         "https://sheets.googleapis.com/v4/spreadsheets/1nKZxQH1nAVPPhpSLH1tPlYcW31-ZRM9qi7KoGvpLroc/values/$subject!A2:M11?key=AIzaSyBHa8gIZFiDDGmSUKiDPBn6I-aDt6e0IHc";
@@ -43,6 +46,16 @@ class SheetQuestions with ChangeNotifier {
 
   void setMargin({double value}) {
     marg = value;
+    notifyListeners();
+  }
+
+  void decrementTimer() {
+    timer -= 2;
+    notifyListeners();
+  }
+
+  void setTimer(double w) {
+    timer = w;
     notifyListeners();
   }
 }

@@ -25,9 +25,13 @@ class SubContainer extends StatelessWidget {
                 return FlatButton(
                   onPressed: () {
                     config.toogleSelection();
-                    selected.toogleSelection();
-                    selected.fullName = subData.fullName;
-                    selected.shortName = subData.shortName;
+                    
+                    selected.fullName == subData.shortName
+                        ? selected.fullName = null
+                        : selected.fullName = subData.fullName;
+                    selected.shortName == subData.shortName
+                        ? selected.resetShortName()
+                        : selected.setShortName(subData.shortName);
                   },
                   color: config.isSelected
                       ? Colors.green

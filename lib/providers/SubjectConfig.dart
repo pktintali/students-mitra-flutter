@@ -12,4 +12,15 @@ class SubjectConfig with ChangeNotifier {
     isSelected = !isSelected;
     notifyListeners();
   }
+
+  void updateShortName(String name) {
+    shortName = name;
+    notifyListeners();
+  }
+
+  void resetSelected() {
+    shortName = null;
+    fullName = null;
+    notifyListeners();
+  }
 }

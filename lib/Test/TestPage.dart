@@ -9,6 +9,7 @@ import '../Profile/profile.dart';
 import '../game/game_zone.dart';
 
 class TestPage extends StatefulWidget {
+  static final String id = "test";
   @override
   _TestPageState createState() => _TestPageState();
 }

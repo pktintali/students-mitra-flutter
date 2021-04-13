@@ -1,11 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:students_mitra_flutter/Test/AlbumCard.dart';
 import 'package:students_mitra_flutter/Test/DataFetching2.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'youtube_base.dart';
 
 class Test extends StatefulWidget {
   Test({this.sub});
@@ -38,6 +36,7 @@ class _TestState extends State<Test> {
     );
   }
 
+// Future<dynamic> getData(){}
   @override
   void initState() {
     super.initState();
@@ -54,6 +53,9 @@ class _TestState extends State<Test> {
     );
   }
 
+  //todo
+// var subjectJson = await networking.getData();
+  // Map<String, dynamic> map = json.decode(subjectJson);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,70 +64,72 @@ class _TestState extends State<Test> {
         builder: (context, snapshot) {
           // not setstate here
           //
+          Map<String, dynamic> myData = json.decode(snapshot.data);
+          print("Data------->${myData['values']}");
           if (snapshot.hasError) {
             return Text('Error ${snapshot.error}');
           }
           //
           if (snapshot.hasData) {
             print("abhinav sahai");
-            streamController.sink.add(snapshot.data.length);
-
+            if (myData != null) streamController.sink.add(myData.length);
             // gridview
-
             //if(MediaQuery.of(context).orientation==Orientation.portrait){
             //return gridview_potrait(snapshot);
             //}else{
             //return gridview_landscape(snapshot);
             //}
-            return ListView.builder(
-                itemCount: snapshot.data["values"].length -
-                    (snapshot.data["values"].length - 10),
-                itemBuilder: (BuildContext context, int index) {
-                  _ids[0] = snapshot.data["values"][index >= 1 ? index : 1][8];
-                  _get();
+            return myData["values"] != null
+                ? ListView.builder(
+                    itemCount: myData["values"].length -
+                        (myData["values"].length - 10),
+                    itemBuilder: (BuildContext context, int index) {
+                      _ids[0] = myData["values"][index >= 1 ? index : 1][8];
+                      _get();
 
-                  return index >= 1 && index < 10
-                      ? Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Card(
-                              elevation: 4.0,
+                      return index >= 1 && index < 10
+                          ? Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(15.0),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Flexible(
-                                            child: Text(
-                                          snapshot.data["values"][index][1],
-                                          style: TextStyle(fontSize: 25.0),
-                                        )),
-                                      ),
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                      YoutubePlayer(
-                                        controller: _controller,
-                                        showVideoProgressIndicator: true,
-                                        bottomActions: [
-                                          CurrentPosition(),
-                                          ProgressBar(isExpanded: true),
+                                child: Card(
+                                  elevation: 4.0,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Container(
+                                            child: Flexible(
+                                                child: Text(
+                                              myData["values"][index][1],
+                                              style: TextStyle(fontSize: 25.0),
+                                            )),
+                                          ),
+                                          SizedBox(
+                                            height: 15.0,
+                                          ),
+                                          YoutubePlayer(
+                                            controller: _controller,
+                                            showVideoProgressIndicator: true,
+                                            bottomActions: [
+                                              CurrentPosition(),
+                                              ProgressBar(isExpanded: true),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                        )
-                      : Text("");
-                });
+                            )
+                          : Text("");
+                    })
+                : circularProgress();
           }
 
           return circularProgress();

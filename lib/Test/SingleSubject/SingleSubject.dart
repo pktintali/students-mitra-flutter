@@ -65,8 +65,9 @@ class SingleSubject extends StatelessWidget {
               builder: (context, data, __) => FlatButton(
                 height: 60,
                 onPressed: () async {
+                  data.withToTimer = MediaQuery.of(context).size.width;
                   data.resetQDB();
-                  if (config.isSelected) {
+                  if (config.shortName!=null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -76,11 +77,11 @@ class SingleSubject extends StatelessWidget {
                     await data.getQuestions(subject: config.shortName);
                   }
                 },
-                color: config.isSelected ? Colors.red : Colors.grey,
+                color: config.shortName!=null ? Colors.red : Colors.grey,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 4),
                   child: FloatingText(
-                    text: config.isSelected
+                    text: config.shortName!=null
                         ? "Start " + config.shortName
                         : "Select a Subject",
                     repeat: true,

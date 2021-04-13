@@ -1,6 +1,7 @@
+// import 'package:students_mitra_flutter/Test/TestPage.dart';
 import 'index.dart';
 
-bool _isSignedIn = false;
+bool _isSignedIn = true;
 // bool _isSignedIn = true;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: _isSignedIn ? HomePage.id : LoginSignUp.id,
+      // initialRoute: _isSignedIn ? TestPage.id : LoginSignUp.id,
       routes: {
         LoginSignUp.id: (context) => LoginSignUp(),
         Graphs.id: (context) => Graphs(),
