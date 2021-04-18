@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:students_mitra_flutter/Test/TestPage.dart';
 import 'package:students_mitra_flutter/Profile/profile.dart';
+import 'package:students_mitra_flutter/index.dart';
+import 'package:students_mitra_flutter/providers/QuestionsDB.dart';
 
 class Score_review_single_sub extends StatefulWidget {
-  final List sub;
+  final List<QuestionsDB> sub;
   final int attempted;
   final int score;
   final int not_attempted;
@@ -23,7 +25,7 @@ class Score_review_single_sub extends StatefulWidget {
 }
 
 class _Score_review_single_subState extends State<Score_review_single_sub> {
-  final List sub;
+  final List<QuestionsDB> sub;
   final int attempted;
   final int score;
   final int not_attempted;

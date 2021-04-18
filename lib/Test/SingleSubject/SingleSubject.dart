@@ -7,7 +7,6 @@ import 'package:students_mitra_flutter/providers/SheetSubjects.dart';
 import 'package:floating_text/floating_text.dart';
 import 'package:flutter/material.dart';
 import 'package:students_mitra_flutter/providers/UnitSubjectData.dart';
-
 class SingleSubject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
