@@ -1,6 +1,6 @@
 # students_mitra_flutter
 
-A new Flutter project.
+Student -Analyser application , to take assessment based objective examination on a college level including performance statistical data , (graphs, charts etc) , having an recommended learning based on students weakness criterias, game -zone to group up and having contest with teamates, review section for mark-ups , valid authentication process , along with Databses of google Firebase , coined up with Flutter !!
 
 ## Getting Started
 
@@ -27,4 +27,5 @@ samples, guidance on mobile development, and a full API reference.
 ![WhatsApp Image 2021-08-26 at 19 32 02](https://user-images.githubusercontent.com/72963525/131309245-652f696d-a78c-472e-af99-3a74ab948be2.jpeg)
 ![WhatsApp Image 2021-08-26 at 19 32 02 (1)](https://user-images.githubusercontent.com/72963525/131309336-b00a15d4-975b-45cb-8feb-052df19ec905.jpeg)
 ![WhatsApp Image 2021-08-26 at 19 29 31 (4)](https://user-images.githubusercontent.com/72963525/131309454-228bce20-fbec-4f7d-8849-2ed0c220fca0.jpeg)
+![WhatsApp Image 2021-08-26 at 19 29 31](https://user-images.githubusercontent.com/72963525/131309807-b088b815-ace1-4a2e-9c49-51a060a7fbd1.jpeg)
 
